@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVM Human Activity Recognition</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Human Activity Recognition</h1>
+        <form method="post">
+            {% for feature in [
+                "tBodyAcc-mean()-X", "tBodyAcc-mean()-Y", "tBodyAcc-mean()-Z",
+                "tBodyAcc-std()-X", "tBodyAcc-std()-Y", "tBodyAcc-std()-Z",
+                "tBodyAcc-mad()-X", "tBodyAcc-mad()-Y", "tBodyAcc-max()-X",
+                "tBodyAcc-min()-X", "tBodyAcc-energy()-X", "tBodyAcc-iqr()-X"
+            ] %}
+                <label>{{ feature }}</label>
+                <input type="text" name="{{ feature }}" required>
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+            <div class="result">Predicted Activity: <strong>{{ prediction }}</strong></div>
+        {% endif %}
+    </div>
+</body>
+</html>
